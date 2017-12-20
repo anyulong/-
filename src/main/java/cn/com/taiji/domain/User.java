@@ -17,7 +17,7 @@ public class User implements Serializable {
 
 	@Id
 	private String id;
-
+	
 	private int age;
 
 	@Temporal(TemporalType.DATE)

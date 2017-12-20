@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import cn.com.taiji.domain.Role;
-import cn.com.taiji.domain.User;
+import cn.com.taiji.domain.Department;
+import cn.com.taiji.domain.DepartmentRepository;
+import cn.com.taiji.dto.DepartmentDto;
 import cn.com.taiji.dto.MenuDto;
 import cn.com.taiji.dto.RoleDto;
 import cn.com.taiji.dto.UserDto;
+import cn.com.taiji.service.DepartmentService;
 import cn.com.taiji.service.MenuService;
 import cn.com.taiji.service.RoleService;
 import cn.com.taiji.service.UserService;
@@ -25,6 +27,10 @@ public class SysApplicationTests {
 	RoleService rs;
 	@Autowired
 	MenuService ms;
+	@Autowired
+	DepartmentService ds;
+	@Autowired
+	DepartmentRepository dr;
 	/**
 	 * 
 	 * @Description:  userService的测试
@@ -35,12 +41,13 @@ public class SysApplicationTests {
 	@Test
 	public void userTest() {
 		//System.out.println(us.findAllUsers());
+		
+		
 		UserDto u = new UserDto();
-		u.setId("1221");
 		u.setAge(18);
-		u.setUserName("安玉龙");
+		u.setUserName("大傻子");
 		us.updUser(u);
-		us.deleteUser("1213");
+	//	System.out.println(us.getPage(1, 3, null, null).get("users"));
 	}
 	/**
 	 * 
@@ -58,6 +65,8 @@ public class SysApplicationTests {
 		rs.updRole(r);
 		rs.findAllRoles();
 		rs.deleteRole("001");
+		//rs.getPage(1, 3, null, null);
+		
 	}
 	
 	/**
@@ -76,6 +85,20 @@ public class SysApplicationTests {
 		m.setMenuDescription("我的列表");
 		m.setLevel("1");
 		ms.updMenu(m);
+		ms.getPage(1, 3, null, null);
+	}
+	
+	@Test
+	public void deptTest() {
+		
+	/*	DepartmentDto d = new DepartmentDto();
+		d.setId("12");
+		d.setDepartmentDtoName("鲁东大学");
+		ds.updDepartment(d);*/
+		/*Department dept=dr.findDepartmentById("1");
+		System.out.println(dept.getDepartments().size());*/
+		DepartmentDto d=ds.findDepartmentById("12");
+		System.out.println(d.getDepartment().getDepartmentName());
 	}
 
 }

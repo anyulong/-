@@ -2,6 +2,8 @@ package cn.com.taiji.dto;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -307,6 +309,13 @@ public class UserDto implements Serializable {
 
 	public void setRoles(List<RoleDto> roles) {
 		this.roles = roles;
+	}
+
+	@Override
+	public String toString() {
+		return "UserDto [id=" + id + ", age=" + age + ", birthDate=" + birthDate + ", changeTime=" + changeTime
+				+ ", changer=" + changer + ", createTime=" + createTime + ", creater=" + creater + ", department="
+				 +"]";
 	}
 
 }

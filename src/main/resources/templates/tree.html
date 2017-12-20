@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BootStrap Table使用</title>
+   <link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+	href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+	th:href="@{/bootstrap3/bootstrap-table/bootstrap-table.css}"
+	href="bootstrap3/bootstrap-table/bootstrap-table.css" />
+	<link rel="stylesheet"
+	th:href="@{/public/css/bootstrap-treeview.css}"
+	href="public/css/bootstrap-treeview.css" />
+	
+	<script type="text/javascript"  th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+	<script type="text/javascript"  th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+	<script type="text/javascript"  th:src="@{/bootstrap3/bootstrap-table/bootstrap-table.js}"></script>
+	<script type="text/javascript"  th:src="@{/bootstrap3/bootstrap-table/bootstrap-table-zh-CN.js}"></script>
+	<script type="text/javascript"  th:src="@{/bootstrap3/util.js}"></script>
+	<script type="text/javascript"  th:src="@{/public/js/bootstrap-treeview.js}"></script>
+	
+<style type="text/css">
+	#tree{
+		width:400px;
+		
+	}
+</style>
+</head>
+<body>
+
+	<div id="tree"></div>
+
+</body>
+</html>
+<script type="text/javascript">
+	/*<![CDATA[*/
+
+	var id = "";
+	$(function json() {
+		//将json格式的字符串传给后台转成Java对象
+		$.post("showtree", function(data) {
+			//console.info(data);
+			//var treeData = JSON.parse(data);
+			
+			//console.info(treeData);
+			/* var data = new Array();
+			data.push(treeData); */
+			function getTree() {
+				console.info(data);
+				return data;
+			}
+
+			$('#tree').treeview({
+				data : getTree()
+			});
+
+		});
+	}, "text");
+
+	/*]]>*/
+</script>

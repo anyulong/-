@@ -39,7 +39,7 @@ public class Role implements Serializable {
 	private int state;
 
 	//bi-directional many-to-many association to Menu
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(
 		name="role_menu"
 		, joinColumns={
@@ -52,7 +52,7 @@ public class Role implements Serializable {
 	private List<Menu> menus;
 
 	//bi-directional many-to-many association to User
-	@ManyToMany(mappedBy="roles")
+	@ManyToMany(mappedBy="roles",fetch=FetchType.LAZY)
 	private List<User> users;
 
 	public Role() {
